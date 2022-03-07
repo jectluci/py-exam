@@ -41,10 +41,30 @@ def total_frios_arequipa(listado):
     for i in listado["DEPARTAMENTO"]:
         if i == "AREQUIPA":
             total += 1
+    return total
 
-    print(total)
+
+# 2.2.Un método o función que calcule la tasa promedio de muertes diarias a nivel
+# nacional desde la fecha de inicio de registro hasta el
+# último día de registro de muertes.  (5 PUNTOS)
+def total_frios_dias(listado):
+    total = 0
+    lista_fechas = []
+    for i in listado["FECHA_FALLECIMIENTO"]:
+        lista_fechas.append(i)
+
+    lista_fechas.sort()
+    total = len(lista_fechas)
+    promedio = total / 234
+
+    return promedio
+
 
 archivo = "fallecidos_covid.txt"
 listado = read_fuente(archivo)
 
 total_arequipa = total_frios_arequipa(listado)
+promedio_diario = total_frios_dias(listado)
+
+print("total de fallecidos en AREQUIPA:", total_arequipa, "fallecidos")
+print("totla fallecidos diarios : ", promedio_diario, "fallecidos")
